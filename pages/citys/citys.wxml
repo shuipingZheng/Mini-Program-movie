@@ -1,0 +1,22 @@
+<view class="search-box">
+  <input placeholder="中文/拼音/首字母" class='search-input' bindinput='bindSarchInput' placeholder-class='search-input-placeholder' />
+</view>
+<view class='a-z'>
+  <view wx:for="{{cityAZ}}" wx:key="unique">
+    <view data-id='{{item.cityName}}' bindtap='bindAZ'>{{item.cityName}}</view>
+  </view>
+</view>
+<view class='city-item-content'>
+  <!-- 定位城市 -->
+  <view >
+    <view class='city-item-A-Z'>定位城市</view>
+    <view wx:if='{{isLocation}}' class='city-item' bindtap='citySelected' data-cityname='{{city}}'>{{city}}</view>
+    <view wx:else='{{isLocation}}' class='city-item' bindtap='onShow'>目前未定位</view>
+  </view>
+
+  <view wx:for="{{cityResults}}" wx:key="unique">
+    <view wx:if="{{item.cityPinYin.length > 1}}" class='city-item' data-cityname='{{item.cityName}}' bindtap='citySelected'>{{item.cityName}}</view>
+    <view wx:else class='city-item-A-Z' data-cityname='{{item.cityName}}'>{{item.cityName}}</view>
+    <!-- <view data-cityname='{{item.cityName}}' bindtap='citySelected' >{{item.cityName}}</view> -->
+  </view>
+</view>

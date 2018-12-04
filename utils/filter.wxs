@@ -1,0 +1,85 @@
+var _filter = {
+  // 过滤演员数据
+  casts: function (casts) {
+    if (casts) {
+      var castsArr = [];
+      
+      for(var idx=0; idx < casts.length; idx++){
+        var c = casts[idx];
+        var castsObj = {
+          id: c.id,
+          name: c.name,
+          imgUrl: c.avatars.large
+        }
+        castsArr.push(castsObj)
+        
+      }
+      return castsArr;
+    }
+    return null;
+
+  },
+  // 剧照
+  photos: function (photos){
+    if (photos) {
+      var photosArr = [];
+
+      for (var idx = 0; idx < photos.length; idx++) {
+        var c = photos[idx];
+        var photosObj = {
+          id: c.id,
+          image: c.image,
+          thumb: c.thumb
+        }
+        photosArr.push(photosObj)
+
+      }
+      return photosArr;
+    }
+    return null;
+  },
+  // 预告片花絮
+  movie: function (trailers, bloopers){
+    var movies = trailers.concat(bloopers);
+    //wx.setStorageSync('movies', movies);
+    return trailers;
+  },
+  // 星星评分
+  stars: function(stars){
+
+    var starsArr = [];
+    var  num= stars.toString();
+  
+    if (num.length == 2){
+      var stars_t = num.substring(0, 1);
+      var stars_s = num.substring(num.length - 1, num.length);
+
+      for (var i = 0; i < 5; i++) {
+        if (i < stars_t) {
+          starsArr.push(1);
+        } else if (i == stars_t && stars_s != 0) {
+          starsArr.push(0.5);
+        } else{
+          starsArr.push(0)
+        }
+      }
+    }else{
+      for (var i = 0; i < 5; i++) {
+        if (i <= stars) {
+          starsArr.push(1);
+        } else {
+          starsArr.push(0)
+        }
+      }
+    }
+    
+    return starsArr;
+  }
+
+};
+module.exports = {
+  casts: _filter.casts,
+  photos: _filter.photos,
+  movie: _filter.movie,
+  stars: _filter.stars
+}

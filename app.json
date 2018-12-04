@@ -1,0 +1,19 @@
+{
+  "pages":[
+    
+    "pages/index/index",
+    "pages/citys/citys",
+    "pages/movie-video/movie-video",
+    "pages/movie-detail/movie-detail",
+    "pages/movie-list/movie-list",
+    "pages/movie-search/movie-search",
+    "pages/movie-star/movie-star"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#ea2000",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"#ffffff"
+  }
+}

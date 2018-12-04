@@ -1,0 +1,9 @@
+<template name='movie-stars'>
+  <view class='star'>
+    <block wx:for='{{stars}}' wx:for-item='s' wx:key='index'>
+      <image wx:if='{{s==1}}' src='../../images/star.png'></image>
+      <image wx:elif='{{s==0}}' src='../../images/none-star.png'></image>
+      <image wx:else='{{s==0.5}}' src='../../images/half-star.png'></image>
+    </block>
+  </view>
+</template>

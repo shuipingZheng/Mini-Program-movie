@@ -1,0 +1,210 @@
+@import '../movie-star/movie-star.wxss';
+.detail-header{
+  padding: 20rpx 30rpx;
+  position: relative;
+  background: rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.detail-info{
+  display: flex;
+  margin-bottom: 30rpx;
+  
+}
+
+.detail-info-bg{
+  position: absolute;
+  background-color: #1b1717;
+  /* background-image: url(https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.jpg); */
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-position: center center;
+  background-size: cover;
+  filter: blur(30rpx);
+
+}
+
+.detail-image{
+  min-width: 200rpx;
+  width: 200rpx;
+  height: 280rpx;
+
+}
+
+.detail-info-text{
+  width: 100%;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.detail-title{
+  color: #fff;
+  font-size: 36rpx;
+}
+.detail-aka{
+  color: #fff;
+
+}
+.detail-average{
+  color: #ffc53a;
+  margin: 10rpx 0;
+  font-size: 38rpx;
+
+}
+.detail-genres,.detail-countries,.detail-pubdates{
+  color: #c1bdba;
+}
+
+.detail-ctrl{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.detail-ctrl button{
+  width: 48%;
+  background: rgba(143, 132, 120, 0.9);
+  color: #fff;
+  margin: 0;
+  line-height: 1.8;
+  font-size: 28rpx;
+  border:1rpx solid #9a978d;
+  border-radius: 8rpx;
+  padding: 5rpx 0;
+}
+
+.detail-summary{
+  padding: 30rpx 30rpx 10rpx;
+  font-size: 30rpx;
+  height: 135rpx;
+  overflow: hidden;
+  color: #000;
+  line-height: 50rpx;
+  
+}
+.detail-summary-ctrl{
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #dedede;
+  text-align: center;
+}
+.detail-summary-ctrl text{
+  padding: 10rpx 20rpx;
+}
+
+.detail-actor{
+  width: 100%;
+  display:flex;
+  flex-direction:row;
+  white-space:nowrap;
+  padding: 0 30rpx 30rpx;
+  box-sizing: border-box;
+
+}
+.detail-actor-wrp{
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: 20rpx;
+  text-align: center;
+}
+.detail-actor-wrp:last-child{
+  margin-right: 0rpx;
+}
+.detail-actor-wrp image{
+  width: 140rpx;
+  height: 197rpx;
+  margin-bottom: 20rpx;
+}
+.detail-actor-wrp text{
+  width: 140rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+
+/* 视频与剧照 */
+.detail-movie-photos-box{
+  width: 100%;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 0rpx 30rpx 30rpx;
+}
+.detail-movie-photos{
+  display: flex;
+  flex-direction: row;  
+}
+
+.detail-movie, .detail-photos{
+  /* max-width: 270rpx; */
+  display: flex;
+  position: relative;
+  margin-right: 10rpx;
+  justify-content: center;
+  align-items: center;
+}
+.detail-movie:last-child, .detail-photos:last-child{
+  margin-right: 0rpx;
+}
+.detail-m-p-image{
+
+  height: 180rpx;
+  max-width: 270rpx;
+  max-height: 180rpx;
+  
+}
+
+.detail-image-icon{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  left: 50%;
+  top: 50%;
+  margin-left: -30rpx;
+  margin-top: -30rpx;
+}
+
+
+/* 观众评论 */
+.popular-reviews{
+  padding: 0rpx 30rpx 30rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #dedede;
+}
+
+.author{
+  width: 120rpx;
+  height: 120rpx;
+
+}
+.avatar{
+  max-width: 100rpx;
+  max-height: 100rpx;
+  border-radius: 50%;
+  margin-top: 10rpx;
+}
+
+.reviews{
+  width: 100%;
+  margin-left: 10rpx;
+}
+
+.author-name{
+  font-size: 28rpx;
+  color: #000;
+  
+}
+
+.summary{
+  color: #000;
+  font-size: 32rpx;
+}
+.comments-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

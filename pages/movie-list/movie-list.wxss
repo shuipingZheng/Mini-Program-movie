@@ -1,0 +1,42 @@
+.movie-list{
+  display: flex;
+  justify-content: space-between;
+  white-space:nowrap;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+}
+.movie-list-text{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+.movie-list-text text{
+  margin-bottom: 10rpx;
+  width: 430rpx;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.movie-list-image{
+  min-width: 120rpx;
+}
+.movie-list-image image{
+  width: 120rpx;
+  height: 170rpx;
+
+}
+.weui-cells_title{
+  font-size: 34rpx;
+  color: black;
+}
+.movie-list-score{
+  min-width: 120rpx;
+  text-align: center;
+  font-weight: 500;
+}
+.movie-list-score text{
+  font-size: 36rpx;
+  color: #ffc53a;
+}

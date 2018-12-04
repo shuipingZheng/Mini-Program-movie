@@ -1,0 +1,18 @@
+ <template name="movieList">
+  <block wx:for="{{movies}}" wx:for-item="item" wx:key="index"> 
+    <view class="movie-list" catchtap="movieDetail" data-movieId="{{item.id}}">
+      <view class="movie-list-image">
+        <image src="{{item.image}}"></image>
+      </view>
+      <view class="movie-list-text">
+        <text class="weui-cells_title">{{item.title}}</text>
+        <text>{{item.genres}}</text>
+        <text>主演:{{item.name}}</text>
+        <text>上映时间:{{item.time}}年</text>
+      </view>
+      <view class="movie-list-score">
+        <text>{{item.average}}分</text>
+      </view>
+    </view>
+   </block> 
+</template>

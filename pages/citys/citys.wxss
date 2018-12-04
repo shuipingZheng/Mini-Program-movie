@@ -1,0 +1,65 @@
+/* pages/citys/citys.wxss */
+.a-z{
+  width: 35rpx;
+  position: fixed;
+  top: 112rpx;
+  text-align: center;
+  right: 5rpx;
+  color: #3399CC;
+  font-size: 30rpx;
+  /* border: 1rpx solid #3399CC; */
+}
+
+
+.city-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 70rpx;
+  background-color: #FFFFFF;
+}
+
+.city-item {
+  background: #fff;
+  width: 80%;  
+  margin-left: 5%;
+  height: 90rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #CCCCCC;    
+}
+
+.city-item-A-Z{
+  width: 100%;
+  height: 40rpx;
+  font-size: 30rpx;
+  padding-left: 5%;
+  background-color: #EEEEEE;
+  border-top: 1rpx solid #CCCCCC;    
+  margin-top: -1rpx;
+}
+
+
+.search-box {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 70rpx;
+  left:0;
+  background: #eee;
+  
+  font-size: 30rpx;
+     /* border: 1rpx solid red;   */
+}
+
+.search-input {
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+}
+
+.search-input-placeholder {
+  text-align: center;
+}

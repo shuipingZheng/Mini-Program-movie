@@ -1,0 +1,25 @@
+/* pages/movie-search/movie-search.wxss */
+@import "../movie-list/movie-list.wxss";
+
+.search-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx;
+  align-items: center;
+}
+.search-in{
+  width: 85%;
+  border: 1rpx solid #dedede;
+  font-size: 28rpx;
+  padding: 5rpx;
+  text-indent: 5rpx;
+}
+.search-sub{
+  max-width:15%;
+  padding:0 !important;
+  text-align:center;
+  color:#ea2000;
+  background:none;
+
+}

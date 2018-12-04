@@ -1,0 +1,117 @@
+<!-- 过滤器 -->
+<wxs src="../../utils/filter.wxs" module="filter" />
+<!-- 星星组件 -->
+<import src="../movie-star/movie-star.wxml" />
+
+<!-- 影片详情 -->
+ <block wx:if='{{subject.images.large}}'> 
+  <view class="detail" >
+    <!-- 影片信息 -->
+    <view class="detail-header">
+    <view class="detail-info-bg" style='background-image:url({{subject.images.large}})'></view>
+      <view class='detail-info'>
+        <image class='detail-image' src='{{subject.images.large}}' data-src='{{subject.images.large}}' bindtap='previewImage'></image>
+        <view class='detail-info-text'>
+          <text class='detail-title'>{{subject.title}}</text>
+          <text class='detail-aka'>{{subject.aka}}</text>
+          <view>
+            <!-- 星星组件 -->
+            <template is='movie-stars' data='{{stars:filter.stars(subject.rating.stars)}}'/>
+            <text class='detail-average'>{{subject.rating.average}}</text>
+          </view>
+          
+          <!-- <text>{{subject.ratings_count}}</text> -->
+          
+          <text class='detail-genres'>{{subject.genres}}</text>
+          <text class='detail-countries'>{{subject.countries}}/{{subject.durations}}</text>
+          <text class='detail-pubdates'>{{subject.pubdates}}</text>
+        </view>
+      </view>
+      <!-- <view class='detail-ctrl'>
+        <button>想看</button>
+        <button>评分</button>
+      </view> -->
+    </view>
+
+    <!-- 影片简介 -->
+    <view class='detail-summary' style='height:{{summaryH}}'>
+      {{subject.summary}}
+    </view>
+    <view class='detail-summary-ctrl' bindtap='unfold'>
+      <text wx:if='{{isUnfold}}'>︿</text>
+      <text wx:else='{{!isUnfold}}'>﹀</text>
+    </view>
+    
+
+    <!-- 职演人员 -->
+    <view class='container'>
+      <view class='m-title'>
+        <text class='m-title-text'>演职人员</text>  
+      </view>
+      <scroll-view class='detail-actor' scroll-x>
+        <block wx:for="{{filter.casts(subject.casts)}}" wx:for-item="casts" wx:key="index">
+          <view class='detail-actor-wrp'>
+            <!-- data-type用于预览图片数据识别 -->
+            <image src='{{casts.imgUrl}}' data-type='casts' data-src='{{casts.imgUrl}}' bindtap='previewImage'></image>
+            <text>{{casts.name}}</text>
+          </view>
+        </block>
+    </scroll-view>
+  </view>
+
+  <!-- 视频和剧照 -->
+    <view class='container'>
+      <view class='m-title'>
+        <text class='m-title-text'>视频和剧照</text>  
+      </view>
+      <scroll-view scroll-x  class='detail-movie-photos-box'>
+        <view class='detail-movie-photos'>
+          <!-- 视频 -->
+          <block wx:for='{{filter.movie(subject.trailers,subject.bloopers)}}' wx:for-item='movie' wx:key='index'>
+            <view class='detail-movie' catchtap='onplayer' data-video='{{movie}}'>
+              <image src='{{movie.medium}}' data-src='{{movie.resource_url}}' class='detail-m-p-image'></image>
+              <image src='../../images/player.png' data-src='' class='detail-image-icon'></image>
+            </view>
+          </block>
+
+          <!-- 照片 -->
+          <block wx:for='{{filter.photos(subject.photos)}}' wx:for-item='photos' wx:key='index'>
+            <view class='detail-photos'>
+              <!-- data-type用于预览图片数据识别 -->
+              <image data-src='{{photos.image}}' data-type='photos' src='{{photos.thumb}}'  class='detail-m-p-image' bindtap='previewImage' mode="widthFix"></image>
+            </view>
+          </block>
+          
+          
+        </view>
+      </scroll-view>
+      </view>
+
+      <!-- 观众评论 -->
+      <view class='container'>
+        <view class='m-title'>
+          <text class='m-title-text'>观众评论</text>  
+        </view> 
+
+        <block wx:for='{{subject.popular_comments}}' wx:for-item='comments' wx:key='index'>
+          <view class='popular-reviews'>
+            <view class='author'>
+              <image src='{{comments.author.avatar}}' data-src='{{comments.author.avatar}}' class='avatar' bindtap='previewImage'></image>
+            </view>
+            <view class='reviews'>
+              <text class='author-name'>{{comments.author.name}}</text>
+              <view>
+                <template is='movie-stars' data='{{stars:filter.stars(comments.rating.value)}}'/>
+              </view>
+              <text class='summary'>{{comments.content}}</text>
+              <view class='comments-info'>
+                <text>{{comments.created_at}}</text>
+                <text style='float:right'>{{comments.useful_count}}赞</text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+      </view>
+  </view>
+</block> 

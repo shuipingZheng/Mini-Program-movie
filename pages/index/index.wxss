@@ -1,0 +1,44 @@
+@import "../movie-list/movie-list.wxss";
+.movie-ctl{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #dedede;
+  padding: 5rpx 20rpx;
+  align-items: center;
+  overflow: hidden;
+}
+.movie-citys{
+  display: flex;
+  align-items: center;
+}
+.movie-gps{
+  width: 30rpx;
+  height: 30rpx;
+  
+}
+
+.movie-search{
+  width: 60rpx;
+  height: 60rpx;
+  border-left:1rpx solid #dedede;
+  padding-left: 10rpx;
+
+}
+.swiper-tab{
+  display: flex;
+  align-items:center;
+}
+.swiper-tab text{
+  margin: 0 10rpx;
+  padding-bottom: 5rpx;
+}
+.swiper-tab .active{
+  color: #ea2000;
+  border-bottom: 1rpx solid #ea2000;
+  
+}
+.swiper-wrp swiper-item{
+  overflow: auto;
+}
+ 

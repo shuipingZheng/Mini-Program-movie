@@ -1,0 +1,34 @@
+<!-- <video src="http://www.runoob.com/try/demo_source/movie.mp4" binderror='errorTip'  controls class='videoCtl'></video> -->
+<video src="{{currentVideo.resource_url}}" binderror='errorTip' autoplay controls class='videoCtl'></video>
+<view class='videos-list-box'>
+    <view class='videos'>
+      <view class='videoInfo'>
+        <text class='title'>{{videoInfo.title}}</text>
+        <view><text>豆瓣评分</text>  <text class='average'>{{videoInfo.average}}</text></view>
+        <text class='pubdates'>{{videoInfo.pubdates}}</text>
+      </view>
+      <view class='tickets'>
+        <text>购票</text>  
+      </view>
+    </view>
+
+    <view style='padding-bottom: 10rpx'>
+      <view class='m-title'>
+        <text class='m-title-text'>播放列表</text>  
+      </view>
+
+      <block wx:for='{{videoInfo.videoList}}' wx:for-item='video' wx:key='index'>
+        <view class='video-list' catchtap='onplayer' data-id='{{video.id}}' data-index='{{index}}'>
+          <view class='video-list-pic'>
+            <image src='{{video.medium}}' class='video-list-img'></image>
+            <image src='../../images/player.png' class='video-list-icon' style='display:{{currentVideoId == video.id ? "none" : "block"}}'></image>
+            <text class='video-list-current' style='display:{{currentVideoId == video.id ? "block" : "none"}}'>播放中</text>
+          </view>
+          <view class='video-list-content'>
+            <text class='video-list-title' style='color:{{currentVideoId == video.id ? "#ea2000" : "#000"}}'>{{video.title}}</text>
+          </view>
+        </view>
+      </block>
+
+    </view>
+</view>

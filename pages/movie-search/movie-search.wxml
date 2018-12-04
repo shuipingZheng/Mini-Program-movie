@@ -1,0 +1,18 @@
+<import src='../movie-list/movie-list.wxml' />
+<view class='container'>
+
+  <view>
+    <form bindsubmit="formSubmit" style='width: 100%;display:block;overflow:hidden;'>
+      <view  class='search-form'>
+        <input name="input" placeholder="找影视剧" class='search-in'></input>
+        <button form-type="submit" size='mini' class='search-sub'>搜索</button>
+      </view>    
+    </form>
+    <block wx:for='{{searchResult}}' wx:for-item='movies' wx:key='index'>
+      <template is="movieList" data="{{movies}}" />
+    </block>
+  </view>
+</view>
+<view wx:if='{{isData}}' style='text-align: center'>
+    <text>没有数据~</text> 
+</view>

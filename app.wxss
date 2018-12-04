@@ -1,0 +1,28 @@
+/**app.wxss**/
+
+text{
+    font-family: MicroSoft Yahei;
+    font-size: 28rpx;
+    color: #666;
+}
+
+input{
+    font-family: MicroSoft YaHei;
+}
+button::after{ border: none; }
+
+.m-title{
+  text-indent: 30rpx;
+  line-height:70rpx;
+  display:flex;
+  align-items: center;
+}
+.m-title-text{
+  color: #000;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.container{
+  border-bottom: 1rpx solid #dedede;
+}
