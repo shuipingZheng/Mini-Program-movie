@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wxc9e5302b7920e209",
-	"projectname": "weixin",
+	"projectname": "movie",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
