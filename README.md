@@ -9,17 +9,17 @@
 * 图片集预览
 * 预告片播放
 
---images -- 图标
+----images ---- 图标
 |
---pages  -- pages
+----pages  ---- pages
 |    |
-|    |--citys-------------定位页面
-|    |     |--citys.js
-|    |     |--citys.json
-|    |     |--citys.wxml
-|    |     |--citys.wxss
+|    |----citys 定位页面
+|    |     |----citys.js
+|    |     |----citys.json
+|    |     |----citys.wxml
+|    |     |----citys.wxss
 |    |
-|    |--index-------------首页
+|    |----index首页
 |    |     |--index.js
 |    |     |--index.json
 |    |     |--index.wxml
