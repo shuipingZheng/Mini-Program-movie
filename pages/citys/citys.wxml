@@ -11,7 +11,7 @@
   <view >
     <view class='city-item-A-Z'>定位城市</view>
     <view wx:if='{{isLocation}}' class='city-item' bindtap='citySelected' data-cityname='{{city}}'>{{city}}</view>
-    <view wx:else='{{isLocation}}' class='city-item' bindtap='onShow'>目前未定位</view>
+    <view wx:else='{{isLocation}}' class='city-item' bindtap='relocation' data-cityname='{{failLocation}}'>{{failLocation}}</view>
   </view>
 
   <view wx:for="{{cityResults}}" wx:key="unique">

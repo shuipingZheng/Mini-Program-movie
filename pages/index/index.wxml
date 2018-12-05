@@ -1,42 +1,40 @@
 <!--index.wxml-->
 <import src="../movie-list/movie-list.wxml" />
-<view class="container">
-   <view class='movie-ctl'>
-    <view class='movie-citys' catchtap='citys'>
-      <text class='movie-address' >{{city}}</text>
-      <image src='../../images/gps.png' class='movie-gps'></image>
-    </view>
-    
-    <!-- 选项卡 -->
-    <view class='swiper-tab'>
-      <text class='{{current == "in_theaters" ? "active" : ""}}' data-current='in_theaters' bindtap='swiperTab'>热映</text>
-      <text class='{{current == "coming_soon" ? "active" : ""}}' data-current='coming_soon' bindtap='swiperTab'>待映</text>
-    </view>
-    <!-- 选项卡 -->
-
-    <image src='../../images/search.png' catchtap='onSearch' class='movie-search'></image>
-   </view>
-
-  <!-- 选项卡内容 -->
-  <swiper current-item-id='{{current}}' class='swiper-wrp' style='height:{{clientHeight}}px' bindchange="swiperTab">
-    <swiper-item item-id='in_theaters'>
-      <view class="movie-wrp">
-        <block wx:for="{{in_theaters}}" wx:for-item="movies" wx:key="index">
-          <template is="movieList" data="{{movies}}" /> 
-        </block> 
+<view class='container'>
+  <scroll-view bindscrolltolower='loadMore' scroll-y='true' style='height:{{scrollHeight}}px;' lower-threshold='60rpx'>
+    <!-- -------------------------header--------------------------- -->
+    <view class='movie-ctl'>
+      <view class='movie-citys' catchtap='citys'>
+        <text class='movie-address' >{{city}}</text>
+        <image src='../../images/gps.png' class='movie-gps'></image>
       </view>
-    </swiper-item>
-    <swiper-item item-id='coming_soon'>
-      <view class="movie-wrp">
-        <block wx:for="{{coming_soon}}" wx:for-item="movies" wx:key="index">
-          <template is="movieList" data="{{movies}}" /> 
-        </block> 
+      
+      <!-- 选项卡 -->
+      <view class='swiper-tab'>
+        <text class='{{current == "in_theaters" ? "active" : ""}}' data-current='in_theaters' bindtap='swiperTab'>热映</text>
+        <text class='{{current == "coming_soon" ? "active" : ""}}' data-current='coming_soon' bindtap='swiperTab'>待映</text>
       </view>
-    </swiper-item>
-  </swiper>
-   
-  <!-- 选项卡内容 -->
+      <!-- 选项卡 -->
+      <image src='../../images/search.png' catchtap='onSearch' class='movie-search'></image>
+    </view>
+    <!-- -------------------------header--------------------------- -->
+    <!-- -----------------------选项卡内容-------------------------- -->
+    <view class='swiper-wrp {{current == "in_theaters" ? "active" : ""}}'>
+      <block wx:for="{{in_theaters}}" wx:for-item="movies" wx:key="index">
+        <template is="movieList" data="{{movies}}" /> 
+      </block>
+    </view>
 
+    <view  class='swiper-wrp {{current == "coming_soon" ? "active" : ""}}'>
+      <block wx:for="{{coming_soon}}" wx:for-item="movies" wx:key="index">
+        <template is="movieList" data="{{movies}}" /> 
+      </block> 
+    </view>
+    <!-- -----------------------选项卡内容-------------------------- -->
+  </scroll-view>
 </view>
+
+
+
 
 

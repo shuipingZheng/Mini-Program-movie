@@ -20,8 +20,9 @@ Page({
     pullDown: false,
     reachBottom: false,
     city: '北京',
-    clientHeight: wx.getSystemInfoSync().windowHeight,
-    isReady: false
+    scrollHeight: wx.getSystemInfoSync().windowHeight,
+    isReady: false,
+    loadMore: false
 
   },
   //事件处理函数
@@ -56,11 +57,11 @@ Page({
   // 加载数据
   loadData: function(){
     
-    util.getData(app.globalData.httpUrl + "/v2/movie/" + this.data.current + "?city=" + this.data.city + "&start=" + this.data[this.data.current + "_param"].start + "&count=20", this.getResult);
+    util.getData(app.globalData.httpUrl + "/v2/movie/" + this.data.current + "?city=" + this.data.city + "&start=" + this.data[this.data.current + "_param"].start + "&count=20", this.getResult, this.data.current);
     //this.getMovieData(app.globalData.httpUrl + "/v2/movie/coming_soon" + "?start=0&count=6", "comingSoon", "即将上映");
   },
   //请求回调
-  getResult: function (movies) {
+  getResult: function (movies, tabType) {
     // 整理json----------------------------------------------
     var subjectsArr = [];
     for (var idx in movies.subjects){
@@ -86,12 +87,12 @@ Page({
       data[this.data.current] = {
         movieList: this.data[this.data.current].movieList.concat(subjectsArr)
       }
-      wx.hideLoading();
       this.setData({
-        reachBottom: false
+        reachBottom: false,
+        loadMore : false
       })
     }else{ //下拉刷新与初始
-      data[this.data.current] = {
+      data[tabType] = {
         movieList: subjectsArr
       }
     } 
@@ -117,7 +118,7 @@ Page({
       // 停止下拉动作
       wx.stopPullDownRefresh();
     }
-    wx.hideLoading();
+     wx.hideLoading();
   },
   //滑动切换
   // swiperTab: function (e) {
@@ -183,34 +184,36 @@ Page({
     this.loadData();
   },
   //页面上拉加载
-  onReachBottom: function(){
+  loadMore: function(){
 
     var total = this.data[this.data.current + '_param'].total;
     var start = this.data[this.data.current + '_param'].start;
     //var count = parseInt(this.data.in_theaters_param.count);
   
     if(start + 20 > total){
-      wx.showToast({
-        icon: 'none',
-        duration: 2000,
-        title: '没有更多数据',
-      })
+      
     }else{
-      wx.showLoading({
-        title: '数据加载中',
-      });
+      this.setData({
+        loadMore : true
+      })
 
-    start = start + 20;
-    var data ={};
-    data[this.data.current + '_param'] = {
-      start: start
-    }
+      start = start + 20;
+      var data ={};
+      data[this.data.current + '_param'] = {
+        start: start
+      }
       data['reachBottom'] = true;
-    this.setData(data);
+      this.setData(data);
       this.loadData();
 
     }
 
+  },
+  //   该方法绑定了页面滚动时的事件
+  scroll: function (event) {
+    this.setData({
+      scrollTop: event.detail.scrollTop
+    });
   },
   getCity: function(){
 
@@ -223,7 +226,7 @@ Page({
         console.log("定位成功");
         var locationString = res.latitude + "," + res.longitude;
 
-        app.requestLocation(_this, locationString, true);
+        util.requestLocation(_this, locationString, true);
 
         var data = {};
         data[_this.data.current + '_param'] = {
@@ -252,16 +255,16 @@ Page({
     var location = wx.getStorageSync('locationCity');
 
     if (city != location && location != ""){
-
-      var data = {};
-      data[this.data.current + '_param'] = {
-        start: 0,
-        total: 0
-      };
-      data['city'] = location;
-      this.setData(data)
-      
-      this.loadData();
+      // 因为切换城市 待映数据并不会更换，所以这里只更新热映数据
+        var data = {};
+        data['in_theaters_param'] = {
+          start: 0,
+          total: 0
+        };
+        data['city'] = location;
+        this.setData(data)
+      util.getData(app.globalData.httpUrl + "/v2/movie/in_theaters?city=" + this.data.city + "&start=" + this.data["in_theaters_param"].start + "&count=20", this.getResult, 'in_theaters');
+     
     }
   },
   // 分享

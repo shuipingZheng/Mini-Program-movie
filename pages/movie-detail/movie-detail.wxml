@@ -92,7 +92,9 @@
         <view class='m-title'>
           <text class='m-title-text'>观众评论</text>  
         </view> 
-
+        <view wx:if='{{subject.popular_comments.length==0}}' style='line-height:60rpx;text-align: center;'>
+          <text>暂无评论</text>
+        </view>
         <block wx:for='{{subject.popular_comments}}' wx:for-item='comments' wx:key='index'>
           <view class='popular-reviews'>
             <view class='author'>

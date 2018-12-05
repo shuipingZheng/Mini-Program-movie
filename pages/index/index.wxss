@@ -30,7 +30,7 @@
   align-items:center;
 }
 .swiper-tab text{
-  margin: 0 10rpx;
+  margin: 0 15rpx;
   padding-bottom: 5rpx;
 }
 .swiper-tab .active{
@@ -38,7 +38,14 @@
   border-bottom: 1rpx solid #ea2000;
   
 }
-.swiper-wrp swiper-item{
-  overflow: auto;
+.swiper-wrp{
+  display: none;
+}
+.swiper-wrp.active{
+  display: block;
+}
+.loadMore{
+  text-align: center;
+  line-height: 50rpx;
 }
  

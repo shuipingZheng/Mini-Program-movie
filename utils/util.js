@@ -15,7 +15,7 @@ const formatNumber = n => {
 }
 
 //请求数据
-const getData = (url, callback) =>{
+const getData = (url, callback, tabType) =>{
   wx.showLoading({
     title: '数据加载中',
   });
@@ -23,10 +23,10 @@ const getData = (url, callback) =>{
     url: url,
     method: 'GET',
     header:{
-      "content-type": "application/xml"
+      "Content-type": "application/text"
     },
     success: res =>{
-      callback(res.data);
+      callback(res.data, tabType);
     }
   })
 
@@ -50,7 +50,44 @@ const resetCasts = (casts) =>{
 
 }
 
+  
+  const requestLocation = (obj, locationString, isStorage, callback) => { //isStorage  是否将地址本地存储
+    
+    wx.request({
+      url: 'https://apis.map.qq.com/ws/geocoder/v1/?l&get_poi=1',
+      data: {
+        "key": "XCWBZ-KHRWG-M6LQV-IBOWL-EURS6-UMFDF",
+        "location": locationString
+      },
+      method: 'GET',
+      // header: {}, 
+      success: function (res) {
+        // success
+        console.log("请求成功");
+        var city = res.data.result.ad_info.city.replace("市", "");
+
+        if (isStorage) {
+          wx.setStorageSync('locationCity', city)
+        }
+
+        obj.setData({
+          city: city
+        })
+
+      },
+      fail: function () {
+        // fail
+        console.log("请求失败");
+      },
+      complete: function () {
+        // complete
+        console.log("请求完成");
+      }
+    })
+  }
+
 module.exports = {
   getData : getData,
-  resetCasts: resetCasts
+  resetCasts: resetCasts,
+  requestLocation: requestLocation
 }
