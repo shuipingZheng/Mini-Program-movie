@@ -14,7 +14,14 @@
 
 ## 截图
 
-![]()
+![](https://github.com/shuipingZheng/Mini-Program-movie/blob/master/images/20181205200118.png)
+![](https://github.com/shuipingZheng/Mini-Program-movie/blob/master/images/20181205200146.png)
+![](https://github.com/shuipingZheng/Mini-Program-movie/blob/master/images/20181205200152.png)
+![](https://github.com/shuipingZheng/Mini-Program-movie/blob/master/images/20181205200140.png)
+![](https://github.com/shuipingZheng/Mini-Program-movie/blob/master/images/20181205200149.png)
+
+## 扫码 微信搜一搜 影中之城
+![](https://github.com/shuipingZheng/Mini-Program-movie/blob/master/images/20181205193736.png)
 
 ## 文件结构
 >images -- 图标
